@@ -1676,6 +1676,7 @@ class EventDetails:
     driver_state_message: Optional[str] = None
     enable_termination_for_node_blocklisted: Optional[bool] = None
     free_space: Optional[int] = None
+    init_scripts: Optional[Dict] = None
     instance_id: Optional[str] = None
     job_run_name: Optional[str] = None
     previous_attributes: Optional['ClusterAttributes'] = None
@@ -1699,6 +1700,7 @@ class EventDetails:
         if self.enable_termination_for_node_blocklisted is not None:
             body['enable_termination_for_node_blocklisted'] = self.enable_termination_for_node_blocklisted
         if self.free_space is not None: body['free_space'] = self.free_space
+        if self.init_scripts is not None: body['init_scripts'] = self.init_scripts
         if self.instance_id is not None: body['instance_id'] = self.instance_id
         if self.job_run_name is not None: body['job_run_name'] = self.job_run_name
         if self.previous_attributes: body['previous_attributes'] = self.previous_attributes.as_dict()
@@ -1723,6 +1725,7 @@ class EventDetails:
                    enable_termination_for_node_blocklisted=d.get('enable_termination_for_node_blocklisted',
                                                                  None),
                    free_space=d.get('free_space', None),
+                   init_scripts=d.get('init_scripts', None),
                    instance_id=d.get('instance_id', None),
                    job_run_name=d.get('job_run_name', None),
                    previous_attributes=_from_dict(d, 'previous_attributes', ClusterAttributes),
